@@ -183,7 +183,7 @@ jobs:
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
 
       - name: Build ISO
-        uses: jasonn3/build-container-installer@v1.2.3
+        uses: jasonn3/build-container-installer@v1.2.4
         id: build
         with:
           iso_name: ${{ env.IMAGE_NAME }}-${{ steps.date.outputs.shortdate }}.iso
