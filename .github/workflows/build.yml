@@ -182,16 +182,12 @@ jobs:
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
 
       - name: Build ISO
-        uses: jasonn3/build-container-installer@main
+        uses: jasonn3/build-container-installer@v1.2.3
         id: build
         with:
-          arch: ${{ env.ARCH}}
           image_name: ${{ env.IMAGE_NAME}}
-          image_repo: ${{ env.IMAGE_REPO}}
-          image_tag: ${{ env.IMAGE_TAG }}
-          version: ${{ env.VERSION }}
-          variant: ${{ env.VARIANT }}
-          iso_name: ${{ env.IMAGE_NAME }}-${{ env.IMAGE_TAG }}-${{ env.VERSION }}.iso
+          image_tag: latest
+          iso_name: ${{ env.IMAGE_NAME }}-${{ steps.date.outputs.date }}.iso
 
       - name: Upload ISO as artifact
         id: upload
@@ -202,5 +198,5 @@ jobs:
             ${{ steps.build.outputs.iso_path }}
             ${{ steps.build.outputs.iso_path }}-CHECKSUM
           if-no-files-found: error
-          retention-days: 0
+          retention-days: 14
           compression-level: 0
