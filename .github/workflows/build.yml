@@ -186,7 +186,7 @@ jobs:
         uses: jasonn3/build-container-installer@v1.2.3
         id: build
         with:
-          image_tag: latest
+          image_tag: 40
           iso_name: ${{ env.IMAGE_NAME }}-${{ steps.date.outputs.shortdate }}.iso
 
       - name: Upload ISO as artifact
