@@ -52,6 +52,7 @@ jobs:
           # https://artifacthub.io/docs/topics/repositories/container-images/
           # https://linux.die.net/man/1/date
           echo "date=$(date -u +%Y\-%m\-%d\T%H\:%M\:%S\Z)" >> $GITHUB_OUTPUT
+          echo "shortdate=$(date -u +'%Y%m%d')" >> $GITHUB_OUTPUT
 
       # Image metadata for https://artifacthub.io/ - This is optional but is highly recommended so we all can get a index of all the custom images
       # The metadata by itself is not going to do anything, you choose if you want your image to be on ArtifactHub or not.
@@ -187,7 +188,7 @@ jobs:
         with:
           image_name: ${{ env.IMAGE_NAME}}
           image_tag: latest
-          iso_name: ${{ env.IMAGE_NAME }}-${{ steps.date.outputs.date }}.iso
+          iso_name: ${{ env.IMAGE_NAME }}-${{ steps.date.outputs.shortdate }}.iso
 
       - name: Upload ISO as artifact
         id: upload
