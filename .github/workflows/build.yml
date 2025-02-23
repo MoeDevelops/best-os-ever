@@ -181,21 +181,3 @@ jobs:
           TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
-
-      - name: Build ISO
-        uses: jasonn3/build-container-installer@v1.2.3
-        id: build
-        with:
-          iso_name: ${{ env.IMAGE_NAME }}-${{ steps.date.outputs.shortdate }}.iso
-
-      - name: Upload ISO as artifact
-        id: upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ steps.build.outputs.iso_name }}
-          path: |
-            ${{ steps.build.outputs.iso_path }}
-            ${{ steps.build.outputs.iso_path }}-CHECKSUM
-          if-no-files-found: error
-          retention-days: 14
-          compression-level: 0
