@@ -1,8 +1,9 @@
-# image-template
+# best-os-ever
 
-# Purpose
+## Purpose
 
 This repository is meant to be a template for building your own custom Universal Blue image. This template is the recommended way to make customizations to any image published by the Universal Blue Project:
+
 - [Aurora](https://getaurora.dev/)
 - [Bazzite](https://bazzite.gg/)
 - [Bluefin](https://projectbluefin.io/)
@@ -18,42 +19,43 @@ or any other base image if you want to start from scratch:
 
 This template includes a Containerfile and a Github workflow for building the container image, signing, and proper metadata to be listed on [artifacthub](https://artifacthub.io/). As soon as the workflow is enabled in your repository, it will build the container image and push it to the Github Container Registry.
 
-# Prerequisites
+## Prerequisites
 
 Working knowledge in the following topics:
 
 - Containers
-  - https://www.youtube.com/watch?v=SnSH8Ht3MIc
-  - https://www.mankier.com/5/Containerfile
+  - <https://www.youtube.com/watch?v=SnSH8Ht3MIc>
+  - <https://www.mankier.com/5/Containerfile>
 - bootc
-  - https://containers.github.io/bootc/
+  - <https://containers.github.io/bootc/>
 - Fedora Silverblue (and other Fedora Atomic variants)
-  - https://docs.fedoraproject.org/en-US/fedora-silverblue/
+  - <https://docs.fedoraproject.org/en-US/fedora-silverblue/>
 - Github Workflows
-  - https://docs.github.com/en/actions/using-workflows
+  - <https://docs.github.com/en/actions/using-workflows>
 
-# How to Use
+## How to Use
 
-## Template
+### Template
 
 Select `Use this Template` and create a new repository from it. To enable the workflows, you may need to go the `Actions` tab of the new repository and click to enable workflows.
 
-## Containerfile
+### Containerfile
 
 This file defines the operations used to customize the selected image. It contains examples of possible modifications, including how to:
+
 - change the upstream from which the custom image is derived
 - add additional RPM packages
 - add binaries as a layer from other images
 
-## Building an ISO
+### Building an ISO
 
 Modify `iso.toml` to point to your custom image before generating an ISO.
 
 - (Steps in progress)
 
-## Workflows
+### Workflows
 
-### build.yml
+#### build.yml
 
 This workflow creates your custom OCI image and publishes it to the Github Container Registry (GHCR). By default, the image name will match the Github repository name.
 
@@ -71,13 +73,12 @@ This provides users a method of verifying the image.
     cosign generate-key-pair
     ```
 
-    
     - Do NOT put in a password when it asks you to, just press enter. The signing key will be used in GitHub Actions and will not work if it is encrypted.
 
-> [!WARNING]
-> Be careful to *never* accidentally commit `cosign.key` into your git repo.
-
 3. Add the private key to GitHub
+
+    > [!WARNING]
+    > Be careful to *never* accidentally commit `cosign.key` into your git repo.
 
     - This can also be done manually. Go to your repository settings, under Secrets and Variables -> Actions
     ![image](https://user-images.githubusercontent.com/1264109/216735595-0ecf1b66-b9ee-439e-87d7-c8cc43c2110a.png)
@@ -92,7 +93,7 @@ This provides users a method of verifying the image.
 
 4. Commit the `cosign.pub` file to the root of your git repository.
 
-# Community
+## Community
 
 - [**bootc discussion forums**](https://github.com/containers/bootc/discussions) - Nothing in this template is ublue specific, the upstream bootc project has a discussions forum where custom image builders can hang out and ask questions.
 - Index your image on [artifacthub.io](https://artifacthub.io), use the `artifacthub-repo.yml` file at the root to verify yourself as the publisher. [Discussion thread](https://universal-blue.discourse.group/t/listing-your-custom-image-on-artifacthub/6446)
