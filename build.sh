@@ -13,10 +13,6 @@ sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.micros
 
 dnf config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
 
-# Remove packages
-
-dnf remove -y blender
-
 # Install packages
 
 dnf install -y kdenlive fastfetch ffmpeg gimp kate code godot neovim steam-devices vlc
