@@ -2,15 +2,18 @@
 
 set -ouex pipefail
 
-### Install packages
+# Add Repositories
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+# VS Code
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
-# this installs a package from fedora repos
-dnf install -y neovim
+# Mullvad
+dnf config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
+
+# Install packages
+
+dnf install -y kdenlive fastfetch ffmpeg gimp kate code godot mullvad-vpn neovim obs-studio steam-devices vlc
 
 # Use a COPR Example:
 #
