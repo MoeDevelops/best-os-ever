@@ -5,15 +5,17 @@ set -ouex pipefail
 # Add Repositories
 
 # VS Code
+
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
 # Mullvad
+
 dnf config-manager addrepo --from-repofile=https://repository.mullvad.net/rpm/stable/mullvad.repo
 
 # Install packages
 
-dnf install -y kdenlive fastfetch ffmpeg gimp kate code godot mullvad-vpn neovim obs-studio steam-devices vlc
+dnf install -y kdenlive fastfetch ffmpeg gimp kate code godot neovim steam-devices vlc
 
 # Use a COPR Example:
 #
