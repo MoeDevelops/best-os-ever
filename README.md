@@ -1,5 +1,17 @@
 # best-os-ever
 
+## Installation
+
+1. Download & install [Fedora Kinoite](https://fedoraproject.org/atomic-desktops/kinoite/download)
+
+2. Change to this image:
+
+    ```bash
+    sudo rpm-ostree reset && sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/moedevelops/best-os-ever:latest
+    ```
+
+3. Reboot
+
 ## Purpose
 
 This repository is meant to be a template for building your own custom Universal Blue image. This template is the recommended way to make customizations to any image published by the Universal Blue Project:
