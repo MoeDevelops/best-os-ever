@@ -91,9 +91,6 @@ This provides users a method of verifying the image.
 
     - Do NOT put in a password when it asks you to, just press enter. The signing key will be used in GitHub Actions and will not work if it is encrypted.
 
-    > [!WARNING]
-    > Be careful to *never* accidentally commit `cosign.key` into your git repo.
-
 3. Add the private key to GitHub
 
     - This can also be done manually. Go to your repository settings, under `Secrets and Variables` -> `Actions`
