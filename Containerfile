@@ -1,4 +1,4 @@
-FROM ghcr.io/ublue-os/kinoite-main:41
+FROM ghcr.io/ublue-os/kinoite-main:latest
 
 COPY build.sh /tmp/build.sh
 
